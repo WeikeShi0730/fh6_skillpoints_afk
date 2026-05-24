@@ -251,12 +251,13 @@ def run_game_loop(repeat_count, trigger=None, dry_run=False):
             wait_for_pixel_trigger(trigger, dry_run=dry_run)
         print(f"loop {completed + 1} started", flush=True)
         press_key("enter", 0.08, dry_run=dry_run)
-        press_key("w", 28.0, dry_run=dry_run)
+        sleep_or_print(4.0, dry_run=dry_run)
+        press_key("w", 26.0, dry_run=dry_run)
         sleep_or_print(7.0, dry_run=dry_run)
         press_key("x", 0.08, dry_run=dry_run)
+        sleep_or_print(1.0, dry_run=dry_run)
         press_key("enter", 0.08, dry_run=dry_run)
         sleep_or_print(7.0, dry_run=dry_run)
-        press_key("enter", 0.08, dry_run=dry_run)
         print(f"loop {completed + 1} completed", flush=True)
         completed += 1
 
@@ -269,6 +270,7 @@ def parse_args():
         "--preset",
         choices=["game-loop", "custom"],
         default="game-loop",
+
         help="Use the built-in game loop or a custom --keys sequence.",
     )
     parser.add_argument(
