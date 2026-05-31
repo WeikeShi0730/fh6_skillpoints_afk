@@ -519,12 +519,19 @@ def run_game_loop(repeat_count, trigger=None, dry_run=False):
         print(f"loop {completed + 1} started", flush=True)
         press_key("enter", 0.08, dry_run=dry_run)
         sleep_or_print(4.0, dry_run=dry_run)
+        press_key("w", 0.08, dry_run=dry_run)
+        press_key("w", 0.08, dry_run=dry_run)
+        press_key("w", 0.08, dry_run=dry_run)
+        press_key("w", 0.08, dry_run=dry_run)
+        press_key("w", 0.08, dry_run=dry_run)
         press_key("w", 26.0, dry_run=dry_run)
-        sleep_or_print(7.0, dry_run=dry_run)
+        if trigger:
+            wait_for_trigger(trigger, dry_run=dry_run)
+        sleep_or_print(0.5, dry_run=dry_run)
         press_key("x", 0.08, dry_run=dry_run)
         sleep_or_print(1.0, dry_run=dry_run)
         press_key("enter", 0.08, dry_run=dry_run)
-        sleep_or_print(7.0, dry_run=dry_run)
+        sleep_or_print(5.0, dry_run=dry_run)
         print(f"loop {completed + 1} completed", flush=True)
         completed += 1
 
@@ -609,7 +616,7 @@ def parse_args():
     parser.add_argument(
         "--trigger-timeout",
         type=float,
-        default=10.0,
+        default=0,
         help="Seconds to wait for the trigger. Use 0 to wait forever.",
     )
     parser.add_argument(
